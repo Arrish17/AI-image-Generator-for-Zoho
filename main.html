@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+
+        #output img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Image Generator for Zoho Clicktrix contest</h1>
+        <input type="text" id="prompt" placeholder="Enter image description" />
+        <button onclick="generateImage()">Generate Image</button>
+        <div id="output"></div>
+        <div class="footer">
+            <p>Powered by Pollinations API</p>
+        </div>
+    </div>
+
+    <script>
+        function generateImage() {
+            const prompt = document.getElementById('prompt').value;
+            const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=1024`;  // Added width and height
+            const outputDiv = document.getElementById('output');
+            
+            // Ensure that the generated image URL is displayed in the output div
+            outputDiv.innerHTML = `<img src="${url}" alt="Generated Image" />`;
+        }
+
+        console.log('Widget loaded successfully');
+    </script>
+</body>
+</html>
